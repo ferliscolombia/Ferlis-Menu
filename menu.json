@@ -1,0 +1,30 @@
+{
+  "nombre": "Ferlis",
+  "lema": "Sándwiches de autor, hechos con orden",
+  "productos": [
+    {
+      "nombre": "El Candela",
+      "descripcion": "Carne, queso, lechugas mix y salsa de pimienta.",
+      "precio": 23000,
+      "alergenos": ["Gluten", "Lácteos"]
+    },
+    {
+      "nombre": "El Pampero",
+      "descripcion": "Carne, queso, chimichurri, rúgula, aceite de oliva, limón, sal y pimienta.",
+      "precio": 23000,
+      "alergenos": ["Gluten", "Lácteos"]
+    },
+    {
+      "nombre": "El Humo",
+      "descripcion": "Pulled pork, queso, salsa agria y mix de lechugas.",
+      "precio": 23000,
+      "alergenos": ["Gluten", "Lácteos"]
+    },
+    {
+      "nombre": "La Toscana",
+      "descripcion": "Pollo, stracciatella, pesto, rúgula, queso y albahaca genovesa.",
+      "precio": 23000,
+      "alergenos": ["Gluten", "Lácteos", "Frutos secos (pesto)"]
+    }
+  ]
+}

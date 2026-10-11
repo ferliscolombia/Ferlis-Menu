@@ -4,8 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ferlis</title>
+  <style>
+    body { margin:0; background:#0f2a1d; color:#f4ecd8; font-family:Georgia,serif; }
+    header { text-align:center; padding:40px 20px 20px; }
+    h1 { color:#c9a45c; letter-spacing:0.3em; font-weight:400; margin:0; }
+    .lema { font-style:italic; opacity:0.8; }
+    main { display:grid; gap:16px; padding:16px; max-width:900px; margin:auto;
+           grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
+    .tarjeta { background:#16392a; border:1px solid #c9a45c; padding:18px; }
+    .tarjeta h2 { color:#c9a45c; font-weight:400; margin:0 0 8px; }
+    .precio { font-size:1.2rem; margin:10px 0; }
+    .alergeno { display:inline-block; font:12px sans-serif; border:1px solid #c9a45c;
+                color:#c9a45c; padding:3px 8px; border-radius:99px; margin:2px; }
+  </style>
 </head>
-<body style="background:#0f2a1d; color:#c9a45c; text-align:center; font-family:Georgia,serif">
-  <h1>FERLIS</h1>
+<body>
+  <header>
+    <h1 id="nombre"></h1>
+    <p class="lema" id="lema"></p>
+  </header>
+  <main id="lista"></main>
+
+  <script>
+    fetch('menu.json')
+      .then(r => r.json())
+      .then(menu => {
+        document.getElementById('nombre').textContent = menu.nombre.toUpperCase();
+        document.getElementById('lema').textContent = menu.lema;
+        const precio = n => '$ ' + n.toLocaleString('es-CO');
+        document.getElementById('lista').innerHTML = menu.productos.map(p => `
+          <article class="tarjeta">
+            <h2>${p.nombre}</h2>
+            <p>${p.descripcion}</p>
+            <div class="precio">${precio(p.precio)}</div>
+            <div>${p.alergenos.map(a => `<span class="alergeno">${a}</span>`).join('')}</div>
+          </article>`).join('');
+      });
+  </script>
 </body>
 </html>
